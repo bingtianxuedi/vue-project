@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/base.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/audio.css">
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <style>
+            html{
+                font-size: 100px;
+            }
+            body{
+                font-size:.16rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="banner"></div>
+        <header>
+            <h2 class="text-center">VUE项目搭建总结</h2>
+        </header>
+        <div class="audio" id="audiob">
+            <audio src="audio/dzq.mp3" loop  preload="none" id="audiop"></audio>
+        </div>
+        <content>
+            <div id="node">
+                <div class="installation">
+                    <h4>1、安装 node</h4>
+                </div>
+                <ul class="items">
+                    <li class="item"> 1、 Windows 安装包(.msi)</li>
+                    <li>
+                        <ul>
+                            <li>
+                                <span>( 1 ) 32 位安装包下载地址 :</span>
+                                <a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x86.msi">https://nodejs.org/dist/v4.4.3/node-v4.4.3-x86.msi</a>
+                            </li>
+                            <li>
+                                <span>( 2 ) 64 位安装包下载地址 :</span>
+                                <a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi">https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi</a>
+                            </li>
+                            <li>下载完安装一直下一步即可</li>
+                        </ul>
+                    </li>
+                    <li class="item">2、 Windows 二进制文件 (.exe)安装</li>
+                    <li>
+                        <ul>
+                            <li>
+                               <span>（ 1 ）32 位安装包下载地址 : </span>
+                                <a href="http://nodejs.org/dist/v0.10.26/node.exe">http://nodejs.org/dist/v0.10.26/node.exe</a>
+                            </li>
+                            <li>
+                                <span>（ 2 ）64 位安装包下载地址 :</span>
+                                <a href="http://nodejs.org/dist/v0.10.26/x64/node.exe">http://nodejs.org/dist/v0.10.26/x64/node.exe</a>
+                            </li>
+                            <li>
+                                点击 Run（运行）按钮将出现命令行窗口；进入 node.exe 所在的目录，输入node -v	查看安装版本，出来node版本即成功。
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="npm">
+                <div class="installation">
+                    <h4>2、安装 npm</h4>
+                </div>
+                <p>NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输	入 "npm -v" 来测试是否成功安装</p>
+                <h5>npm升级方法：</h5>
+                <ol>
+                    <li>npm install npm -g( windows版)</li>
+                    <li>sudo npm install npm -g（非windows版）</li>
+                </ol>
+            </div>
+            <div id="vue">
+                <div class="installation">
+                    <h4>3、安装VUE<small>（npm 版本需要大于 3.0，如果低于此版本需要升级它）</small></h4>
+                </div>
+                <ul>
+                    <li>npm install vue -g</li>
+                    <li>npm install vue-cli -g</li>
+                    <li>npm install webpack -g <small>( WebPack可以看做是模块打包机 )</small> </li>
+                </ul>
+            </div>
+            <div id="vue_create">
+                <div class="installation">
+                    <h4>4、创建VUE项目</h4>
+                </div>
+                <div>
+                    <h4> ( 1 ) vue项目创建</h4>
+                    <ul>
+                        <li>在cmd命令窗口中输入：<span style="color:#0000ff">vue init webpack demo</span></li>
+                        <li>
+                            <img src="./images/vue_installation.png"
+                                 alt="各个步骤的意思要掌握" title="各个步骤的意思要掌握">
+                        </li>
+                        <li>
+                            按照提示自动打开浏览器出现VUE图标即完成项目创建
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4> ( 2 ) vue项目依赖第三方包</h4>
+                    <ol>
+                        <li>安装vvue-router: <span style="color:#0000ff">npm install vue-router --save</span></li>
+                        <li>安装less和less-loader <span style="color:#0000ff">npm install less less-loader --save</span></li>
+                        <li>
+                            <ol>
+                                <li>配置less路径:</li>
+                                <li>在build---> <span style="color:#ff0000">webpack.base.conf.js</span> 添加 <span style="color:#ff0000">{ test: /\.less$/,loader: 'style-loader!css-loader!less-loader'}</span> </li>
+
+                            </ol>
+                        </li>
+                        <li>安装sass:</li>
+                        <li>
+                            <ol>
+                                <li>---->npm install node-sass  --save</li>
+                                <li>---->npm install sass-loader  --save</li>
+                                <li>通常使用npm安装会出现以下报错，安装失败。（网路问题）</li>
+                                <li>
+                                    <img src="./images/sass_installation_err.png" alt="">
+                                    <br>
+                                    <small>可以通过淘宝的npm镜像安装node-sass，解决以上问题。</small>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>淘宝镜像安装：</li>
+                        <li>
+                            <ol>
+                                <li>-->npm install -g cnpm --registry=https://registry.npm.taobao.org <small>（安装淘宝镜像）</small> </li>
+                                <li>使用：-->cnpm install node-sass  --save <small>（使用淘宝镜像安装node-sass）</small></li>
+                            </ol>
+                        </li>
+                        <li>
+                            图片处理（ element-ui )：（一种解决跨域问题，也可以用node进行转换）
+                        </li>
+                        <li>
+                            <ol>
+                                <li>在package.json 的 dependencies 字段下面增加"element-ui":"^1.3.4" 这里的1.3.4是需要安装的那个版本</li>
+                                <li>
+                                    <ol>
+                                        <li>在main.js 下面增加element-ui 的应用</li>
+                                        <li>import ElementUI from 'element-ui'</li>
+                                        <li>import 'element-ui/lib/theme-default/index.css'</li>
+                                        <li>Vue.use(ElementUI)</li>
+                                    </ol>
+                                </li>
+                                <li>应用（例）：&lt;el-button type="primary"&gt;主要按钮&lt;/el-button&gt; </li>
+                            </ol>
+                        </li>
+                        <li>安装vuex <small style="color:#ff0000">（必须显式地通过 Vue.use()来安装 Vuex ）</small></li>
+                        <li>
+                            <ol>
+                                <li>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式,这个状态自管理应用包含以下几个部分：</li>
+                                <li>state，驱动应用的数据源；</li>
+                                <li>view，以声明方式将 state 映射到视图；</li>
+                                <li>actions，响应在 view 上的用户输入导致的状态变化</li>
+                                <li>需要构建是一个中大型单页应用，您很可能会考虑如何更好地在组件外部管	理状态，Vuex 将会成为自然而然的选择</li>
+                            </ol>
+                        </li>
+                        <li>
+                            安装 axios -->npm install axios -s
+                        </li>
+                        <li>
+                            <ol>
+                                <li>在 main.js 中引入 axios-->import axios from 'axios'</li>
+                                <li>这时候如果在其它的组件中，是无法使用 axios 命令的。但可以将 	axios 	改写为 Vue 的原型属性，Vue.prototype.$ajax = axios</li>
+                                <li>在 main.js 中添加了这两行代码之后，就能直接在组件的 methods 中	使用 $ajax 命令</li>
+                                <li>
+                                    <h5>例：</h5>
+                                    <textarea>
+                                        methods: {
+                                            submitForm () {
+                                                this.$ajax({
+                                                    method: 'post',
+                                                    url: '/user',
+                                                    data: {
+                                                        name: 'wise',
+                                                        info: 'wrong'
+                                                    }
+                                                })
+                                        }
+                                    </textarea>
+
+                                </li>
+                                <li>
+                                    关于vuex封装axios 可在下面网址中查看用法 <a href="https://www.cnblogs.com/wisewrong/p/6402183.html">https://www.cnblogs.com/wisewrong/p/6402183.html</a>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+        </content>
+        <footer>
+            <div class="center-block">
+                <h4 class="text-center">
+                    至此所有VUE创建项目的依赖基本完成，如有不足，请观看者批评指正，谢谢！
+                </h4>
+                <h5 class="text-right">
+                    意见邮箱：439936750@qq.com
+                </h5>
+            </div>
+        </footer>
+        <div id="bg_main">
+            <img src="./images/bg-main.jpg" alt="">
+        </div>
+    </body>
+
+    <script src="./js/responsive_layout.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/audio.js"></script>
+    <script src="js/swiper-3.4.2.min.js"></script>
+</html>
